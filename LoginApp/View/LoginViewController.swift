@@ -27,6 +27,9 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginAction(_ sender: Any) {
+        self.emailTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
+        
         guard let email = emailTextField.text,
               let password = passwordTextField.text else {
             return
@@ -57,9 +60,9 @@ class LoginViewController: UIViewController {
                 return
             }
             
+            self.performSegue(withIdentifier: "homeScreen", sender: self)
             self.emailTextField.text = ""
             self.passwordTextField.text = ""
-            self.performSegue(withIdentifier: "homeScreen", sender: self)
         }
     }    
 }
